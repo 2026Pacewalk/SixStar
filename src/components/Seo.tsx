@@ -21,9 +21,34 @@ function upsertLink(rel: string, href: string) {
   el.setAttribute('href', href)
 }
 
+function setOrRemoveMeta(property: string, content?: number) {
+  const existing = document.head.querySelector(`meta[property="${property}"]`)
+  if (content == null) {
+    existing?.remove()
+    return
+  }
+  if (existing) {
+    existing.setAttribute('content', String(content))
+  } else {
+    const el = document.createElement('meta')
+    el.setAttribute('property', property)
+    el.setAttribute('content', String(content))
+    document.head.appendChild(el)
+  }
+}
+
 const PAGE_LD_ID = 'page-jsonld'
 
-export default function Seo({ title, description, path, image, robots, jsonLd }: PageMeta) {
+export default function Seo({
+  title,
+  description,
+  path,
+  image,
+  imageWidth,
+  imageHeight,
+  robots,
+  jsonLd,
+}: PageMeta) {
   const url = `${SITE_URL}${path === '/' ? '/' : path}`
   const img = image ? (image.startsWith('http') ? image : `${SITE_URL}${image}`) : DEFAULT_IMAGE
   const ldStr = jsonLd ? JSON.stringify(jsonLd) : ''
@@ -39,6 +64,11 @@ export default function Seo({ title, description, path, image, robots, jsonLd }:
     upsertMeta('property', 'og:url', url)
     upsertMeta('property', 'og:type', 'website')
     upsertMeta('property', 'og:image', img)
+    upsertMeta('property', 'og:image:secure_url', img)
+    upsertMeta('property', 'og:image:type', img.endsWith('.png') ? 'image/png' : 'image/jpeg')
+    upsertMeta('property', 'og:image:alt', title)
+    setOrRemoveMeta('og:image:width', imageWidth)
+    setOrRemoveMeta('og:image:height', imageHeight)
     upsertMeta('property', 'og:site_name', ORG_NAME)
     upsertMeta('property', 'og:locale', 'en_IN')
 
@@ -59,7 +89,7 @@ export default function Seo({ title, description, path, image, robots, jsonLd }:
     } else if (script) {
       script.remove()
     }
-  }, [title, description, url, img, robots, ldStr])
+  }, [title, description, url, img, imageWidth, imageHeight, robots, ldStr])
 
   return null
 }

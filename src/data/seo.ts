@@ -95,6 +95,41 @@ export function serviceLd(opts: { name: string; description: string; path: strin
   }
 }
 
+// --- Homepage FAQ (visible accordion + FAQPage rich-result schema) ---
+
+export const homeFaqs = [
+  {
+    q: 'What is CED coating?',
+    a: 'CED (Cathode Electro Deposition) coating is an advanced, water-based electro-deposition process used mainly for automotive and metal parts. It delivers even coverage on complex shapes and exceptional resistance to rust and corrosion.',
+  },
+  {
+    q: 'What is the difference between CED coating and powder coating?',
+    a: 'CED coating is a water-based dip process that gives outstanding corrosion protection and reaches recessed areas, making it ideal as a primer or single-coat for automotive parts. Powder coating is a dry, electrostatically applied finish available in a wide range of colours and textures. Six Star Impex offers both.',
+  },
+  {
+    q: 'Where is Six Star Impex located?',
+    a: 'Six Star Impex operates a 24,000 sq.ft coating facility at Plot-14E, MUP-2 Ecotech-3, Greater Noida, Uttar Pradesh 201306, serving manufacturers across Delhi NCR and North India.',
+  },
+  {
+    q: 'Can Six Star Impex handle high-volume production orders?',
+    a: 'Yes. With three production lines — two powder coating lines and one CED line — Six Star Impex handles high volumes daily, including OEM overflow, backed by 25+ years of surface-finishing experience.',
+  },
+  {
+    q: 'How do I request a coating quote?',
+    a: 'Click “Request A Quote” on any page, call +91 99715 35937, or message us on WhatsApp with your part details, volumes and timelines. Our team responds quickly with a customized coating solution.',
+  },
+]
+
+export const faqPageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
 // --- Per-page metadata ---
 
 export type PageMeta = {
@@ -102,6 +137,8 @@ export type PageMeta = {
   description: string
   path: string
   image?: string
+  imageWidth?: number
+  imageHeight?: number
   robots?: string
   jsonLd?: unknown
 }
@@ -116,6 +153,9 @@ export const pageSeo = {
       'Six Star Impex offers CED coating and powder coating services to top Indian brands from a 24,000 sq.ft plant in Greater Noida. High-volume, OEM-approved quality. Request a quote.',
     path: '/',
     image: '/images/coating-expertise.jpg',
+    imageWidth: 2000,
+    imageHeight: 1333,
+    jsonLd: faqPageLd,
   },
   about: {
     title: 'About Us | Six Star Impex – Industrial Coating Experts',

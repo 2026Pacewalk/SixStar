@@ -6,6 +6,7 @@ import { heroSlides, whyPoints, services, clients, company } from '../data/site'
 import { useQuote } from '../context/QuoteContext'
 import Reveal from '../components/Reveal'
 import CTABand from '../components/CTABand'
+import FaqSection from '../components/FaqSection'
 import Seo from '../components/Seo'
 import { pageSeo } from '../data/seo'
 
@@ -34,7 +35,15 @@ function Hero() {
           transition={{ duration: 1.1, ease: 'easeOut' }}
         >
           {slide.video ? (
-            <video autoPlay muted loop playsInline className="h-full w-full object-cover">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              poster="/images/high-quality.jpg"
+              className="h-full w-full object-cover"
+            >
               <source src={slide.video} type="video/mp4" />
             </video>
           ) : (
@@ -60,9 +69,9 @@ function Hero() {
             <p className="mb-3 text-lg font-medium tracking-wide text-brand-light md:text-xl">
               {slide.kicker}
             </p>
-            <h1 className="mx-auto max-w-4xl text-4xl font-extrabold leading-tight text-white drop-shadow-lg md:text-6xl lg:text-7xl">
+            <div className="mx-auto max-w-4xl font-heading text-4xl font-extrabold leading-tight text-white drop-shadow-lg md:text-6xl lg:text-7xl">
               {slide.title}
-            </h1>
+            </div>
             <button onClick={openQuote} className="btn-primary mt-8 px-9 py-4 text-base">
               Request A Quote <ArrowRight size={18} />
             </button>
@@ -110,7 +119,9 @@ function WhatWeOffer() {
             <div className="absolute -left-4 -top-4 h-24 w-24 rounded-2xl bg-brand/10" />
             <img
               src="/images/about-1.png"
-              alt="Coating expertise at Six Star Impex"
+              alt="CED and powder coated parts produced by Six Star Impex"
+              loading="lazy"
+              decoding="async"
               className="relative w-full rounded-3xl object-cover shadow-card"
             />
           </div>
@@ -196,7 +207,9 @@ function Services() {
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={s.image}
-                    alt={s.title}
+                    alt={`${s.title} by Six Star Impex`}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                   />
                   <span className="absolute right-4 top-4 grid h-12 w-12 place-items-center rounded-full bg-brand-gradient text-lg font-bold text-white shadow-lg">
@@ -250,7 +263,13 @@ function Brands() {
               key={i}
               className="grid h-28 w-44 shrink-0 place-items-center rounded-2xl border border-slate-100 bg-white p-5 shadow-soft"
             >
-              <img src={src} alt="Client brand" className="max-h-16 w-auto object-contain" />
+              <img
+                src={src}
+                alt="Brand that trusts Six Star Impex coating"
+                loading="lazy"
+                decoding="async"
+                className="max-h-16 w-auto object-contain"
+              />
             </div>
           ))}
         </div>
@@ -263,11 +282,15 @@ export default function Home() {
   return (
     <>
       <Seo {...pageSeo.home} />
+      <h1 className="sr-only">
+        Six Star Impex — CED &amp; Powder Coating Services in Greater Noida, India
+      </h1>
       <Hero />
       <WhatWeOffer />
       <WhySixStar />
       <Services />
       <Brands />
+      <FaqSection />
       <CTABand />
     </>
   )
