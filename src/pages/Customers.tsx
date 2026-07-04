@@ -2,10 +2,13 @@ import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import CTABand from '../components/CTABand'
 import { clients } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 export default function Customers() {
   return (
     <>
+      <Seo {...pageSeo.customers} />
       <PageHeader
         title="Customers"
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Customers' }]}

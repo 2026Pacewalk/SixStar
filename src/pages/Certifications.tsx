@@ -4,6 +4,8 @@ import Reveal from '../components/Reveal'
 import SideNav from '../components/SideNav'
 import CTABand from '../components/CTABand'
 import { certifications } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 const aboutLinks = [
   { label: 'History', to: '/history' },
@@ -15,6 +17,7 @@ const aboutLinks = [
 export default function Certifications() {
   return (
     <>
+      <Seo {...pageSeo.certifications} />
       <PageHeader
         title="Certifications & Approvals"
         crumbs={[

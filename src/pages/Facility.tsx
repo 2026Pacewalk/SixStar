@@ -6,6 +6,8 @@ import Reveal from '../components/Reveal'
 import SideNav from '../components/SideNav'
 import CTABand from '../components/CTABand'
 import { facilityImages, company } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 const aboutLinks = [
   { label: 'History', to: '/history' },
@@ -30,6 +32,7 @@ export default function Facility() {
 
   return (
     <>
+      <Seo {...pageSeo.facility} />
       <PageHeader
         title="Our Facility"
         crumbs={[{ label: 'Home', to: '/' }, { label: 'About Us', to: '/about' }, { label: 'Our Facility' }]}

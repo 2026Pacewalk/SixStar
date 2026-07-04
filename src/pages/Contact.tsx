@@ -3,6 +3,8 @@ import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import { company } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 const inputClass =
   'w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-ink outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20'
@@ -35,6 +37,7 @@ export default function Contact() {
 
   return (
     <>
+      <Seo {...pageSeo.contact} />
       <PageHeader
         title="Contact Us"
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Contact Us' }]}

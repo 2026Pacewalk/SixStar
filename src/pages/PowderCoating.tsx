@@ -1,9 +1,13 @@
 import ServiceLayout from '../components/ServiceLayout'
 import { powderAdvantages } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 export default function PowderCoating() {
   return (
-    <ServiceLayout
+    <>
+      <Seo {...pageSeo.powder} />
+      <ServiceLayout
       title="Powder Coating"
       bg="/images/powder-coating-bg.jpg"
       heroImage="/images/powder-coating.jpg"
@@ -14,6 +18,7 @@ export default function PowderCoating() {
       advantages={powderAdvantages}
       gallery={['/images/powder-1.png', '/images/powder-2.png', '/images/powder-3.png', '/images/powder-4.png']}
       galleryTinted
-    />
+      />
+    </>
   )
 }

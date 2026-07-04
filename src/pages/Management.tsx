@@ -3,6 +3,8 @@ import Reveal from '../components/Reveal'
 import SideNav from '../components/SideNav'
 import CTABand from '../components/CTABand'
 import { management } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 const aboutLinks = [
   { label: 'History', to: '/history' },
@@ -14,6 +16,7 @@ const aboutLinks = [
 export default function Management() {
   return (
     <>
+      <Seo {...pageSeo.management} />
       <PageHeader
         title="Our Management"
         crumbs={[

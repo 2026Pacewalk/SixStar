@@ -4,6 +4,8 @@ import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import CTABand from '../components/CTABand'
 import { aboutCards, company } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 const stats = [
   { value: '25+', label: 'Years of Experience' },
@@ -15,6 +17,7 @@ const stats = [
 export default function About() {
   return (
     <>
+      <Seo {...pageSeo.about} />
       <PageHeader title="About Us" crumbs={[{ label: 'Home', to: '/' }, { label: 'About Us' }]} bg="/images/about-us-bg.jpg" />
 
       <section className="section">

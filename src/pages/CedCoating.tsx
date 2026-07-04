@@ -1,9 +1,13 @@
 import ServiceLayout from '../components/ServiceLayout'
 import { cedAdvantages } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 export default function CedCoating() {
   return (
-    <ServiceLayout
+    <>
+      <Seo {...pageSeo.ced} />
+      <ServiceLayout
       title="CED Coating"
       bg="/images/ced-coating-bg.jpg"
       heroImage="/images/ced-coating-1.jpg"
@@ -14,6 +18,7 @@ export default function CedCoating() {
       advantages={cedAdvantages}
       gallery={['/images/ced-coating-2.png', '/images/ced-coating-3.png']}
       galleryTinted
-    />
+      />
+    </>
   )
 }

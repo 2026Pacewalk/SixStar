@@ -3,6 +3,8 @@ import Reveal from '../components/Reveal'
 import SideNav from '../components/SideNav'
 import CTABand from '../components/CTABand'
 import { company } from '../data/site'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 const aboutLinks = [
   { label: 'History', to: '/history' },
@@ -41,6 +43,7 @@ const milestones = [
 export default function History() {
   return (
     <>
+      <Seo {...pageSeo.history} />
       <PageHeader
         title="History"
         crumbs={[{ label: 'Home', to: '/' }, { label: 'About Us', to: '/about' }, { label: 'History' }]}

@@ -6,6 +6,8 @@ import { heroSlides, whyPoints, services, clients, company } from '../data/site'
 import { useQuote } from '../context/QuoteContext'
 import Reveal from '../components/Reveal'
 import CTABand from '../components/CTABand'
+import Seo from '../components/Seo'
+import { pageSeo } from '../data/seo'
 
 function Hero() {
   const [index, setIndex] = useState(0)
@@ -260,6 +262,7 @@ function Brands() {
 export default function Home() {
   return (
     <>
+      <Seo {...pageSeo.home} />
       <Hero />
       <WhatWeOffer />
       <WhySixStar />
