@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-ink antialiased bg-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-ink;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold
+      tracking-wide transition-all duration-300 focus:outline-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand-gradient text-white shadow-card hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  .btn-outline {
+    @apply btn border-2 border-brand text-brand hover:bg-brand hover:text-white;
+  }
+  .btn-ghost-white {
+    @apply btn border-2 border-white/70 text-white hover:bg-white hover:text-brand;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-brand;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-brand;
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-soft ring-1 ring-black/5;
+  }
+  .prose-list li {
+    @apply relative pl-7 mb-3 text-muted leading-relaxed;
+  }
+  .prose-list li::before {
+    content: '';
+    @apply absolute left-0 top-2 h-3.5 w-3.5 rounded-full bg-brand-gradient;
+  }
+}
+
+/* Hide scrollbar for marquee track */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
